@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mercer Properties | Office Leasing, El Paso</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Work+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --adobe:       #E9DBBF;
+    --adobe-deep:  #DCC79A;
+    --plaster:     #F4ECDA;
+    --ink:         #2C2519;
+    --ink-soft:    #6B5F49;
+    --turquoise:   #1C7C6E;
+    --turquoise-d: #14594F;
+    --gold:        #C4872B;
+    --sky:         #6C93A6;
+    --rented:      #A65A3E;
+    --line:        rgba(44,37,25,0.15);
+
+    --display: 'Bricolage Grotesque', sans-serif;
+    --body: 'Work Sans', sans-serif;
+    --mono: 'Space Mono', monospace;
+
+    --arch: 60px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0; background:var(--adobe); color:var(--ink);
+    font-family:var(--body); line-height:1.6; -webkit-font-smoothing:antialiased;
+  }
+  img{ max-width:100%; display:block; }
+  a{ color:inherit; }
+  h1,h2,h3{ font-family:var(--display); margin:0; }
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 32px; }
+  section{ position:relative; }
+
+  .eyebrow{
+    font-family:var(--mono); font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--turquoise-d); display:flex; align-items:center; gap:10px; margin-bottom:14px;
+  }
+  .eyebrow::before{ content:"◠"; font-size:1rem; }
+
+  .arch-divider{
+    width:44px; height:22px;
+    border:2px solid var(--turquoise-d);
+    border-bottom:none;
+    border-radius:44px 44px 0 0;
+    margin:0 auto 18px;
+  }
+
+  /* ---------- Nav ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(233,219,191,0.92); backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    max-width:1180px; margin:0 auto; padding:16px 32px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .logo{ display:flex; align-items:center; gap:10px; text-decoration:none; }
+  .logo .mark{ width:26px; height:22px; background:var(--turquoise); border-radius:14px 14px 3px 3px; }
+  .logo .word{ font-family:var(--display); font-weight:700; font-size:1.25rem; }
+  .logo .word .sub{ display:block; font-family:var(--mono); font-weight:400; font-size:0.6rem; letter-spacing:0.08em; color:var(--ink-soft); text-transform:uppercase; margin-top:-2px; }
+  .nav-links{ display:flex; gap:26px; list-style:none; margin:0; padding:0; font-size:0.9rem; font-weight:500; }
+  .nav-links a{ text-decoration:none; }
+  .nav-links a:hover{ color:var(--turquoise-d); }
+  .nav-cta{
+    background:var(--turquoise); color:var(--plaster);
+    font-weight:600; font-size:0.86rem;
+    padding:11px 20px; text-decoration:none;
+    border-radius:30px 30px 8px 8px;
+  }
+  .nav-cta:hover{ background:var(--turquoise-d); }
+  .nav-toggle{ display:none; background:none; border:none; cursor:pointer; }
+  .nav-toggle span{ display:block; width:22px; height:2px; background:var(--ink); margin:5px 0; }
+
+  /* ---------- Hero ---------- */
+  .hero{ padding:66px 0 40px; }
+  .hero-inner{ display:grid; grid-template-columns:1.05fr 0.95fr; gap:48px; align-items:center; }
+  .hero h1{ font-size:clamp(2.4rem,5vw,3.7rem); font-weight:700; line-height:1.05; }
+  .hero h1 .accent{ color:var(--turquoise-d); font-style:italic; }
+  .hero p.lede{ font-size:1.06rem; color:var(--ink-soft); max-width:46ch; margin:20px 0 28px; }
+  .hero-ctas{ display:flex; gap:14px; flex-wrap:wrap; }
+  .btn{ display:inline-block; text-decoration:none; font-weight:600; font-size:0.9rem; padding:13px 24px; border-radius:30px 30px 8px 8px; }
+  .btn-solid{ background:var(--turquoise); color:var(--plaster); border:none; cursor:pointer; }
+  .btn-solid:hover{ background:var(--turquoise-d); }
+  .btn-outline{ border:1.5px solid var(--ink); color:var(--ink); }
+  .btn-outline:hover{ background:var(--ink); color:var(--plaster); }
+
+  .hero-art{ position:relative; }
+  .hero-art svg{ width:100%; height:auto; display:block; }
+
+  .trust-strip{ margin-top:52px; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .trust-strip .wrap{ display:grid; grid-template-columns:repeat(4,1fr); }
+  .trust-item{ padding:22px 24px; border-left:1px solid var(--line); }
+  .trust-item:first-child{ border-left:none; padding-left:0; }
+  .trust-item .num{ font-family:var(--display); font-size:1.9rem; font-weight:700; color:var(--turquoise-d); }
+  .trust-item .label{ font-family:var(--mono); font-size:0.66rem; letter-spacing:0.04em; color:var(--ink-soft); text-transform:uppercase; }
+
+  /* ---------- Section generic ---------- */
+  .section{ padding:92px 0; }
+  .section-head{ max-width:640px; margin:0 auto 48px; text-align:center; }
+  .section-head h2{ font-size:clamp(1.85rem,3.4vw,2.5rem); font-weight:700; }
+  .section-alt{ background:var(--plaster); }
+
+  /* ---------- Building / Gallery ---------- */
+  .building-copy{ max-width:60ch; margin:0 auto 40px; text-align:center; color:var(--ink-soft); }
+  .gallery-grid{ display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:140px; gap:14px; }
+  .gallery-grid .g1{ grid-column:span 2; grid-row:span 2; }
+  .gallery-item{
+    border-radius:20px 20px 8px 8px; overflow:hidden; cursor:pointer;
+    border:1px solid var(--line); position:relative;
+  }
+  .gallery-item svg{ width:100%; height:100%; display:block; }
+  .gallery-item .glabel{
+    position:absolute; left:10px; bottom:10px;
+    background:rgba(44,37,25,0.75); color:var(--plaster);
+    font-family:var(--mono); font-size:0.62rem; letter-spacing:0.04em; text-transform:uppercase;
+    padding:5px 10px; border-radius:14px;
+  }
+  .gallery-item:hover{ outline:2px solid var(--turquoise); }
+
+  .lightbox{
+    display:none; position:fixed; inset:0; background:rgba(44,37,25,0.88);
+    z-index:100; align-items:center; justify-content:center; padding:40px;
+  }
+  .lightbox.open{ display:flex; }
+  .lightbox-inner{ max-width:760px; width:100%; }
+  .lightbox-inner .frame{ border-radius:var(--arch) var(--arch) 14px 14px; overflow:hidden; }
+  .lightbox-inner svg{ width:100%; height:auto; display:block; }
+  .lightbox-cap{ color:var(--plaster); font-family:var(--mono); font-size:0.8rem; margin-top:14px; text-align:center; }
+  .lightbox-close{
+    position:absolute; top:24px; right:32px; background:none; border:none; color:var(--plaster);
+    font-family:var(--mono); font-size:0.85rem; cursor:pointer; letter-spacing:0.05em;
+  }
+
+  /* ---------- Available Spaces ---------- */
+  .tabbar{ display:flex; justify-content:center; gap:10px; margin-bottom:40px; }
+  .tab-btn{
+    font-family:var(--mono); font-size:0.8rem; letter-spacing:0.04em; text-transform:uppercase;
+    background:none; border:1.5px solid var(--line); color:var(--ink-soft); cursor:pointer;
+    padding:10px 22px; border-radius:30px 30px 8px 8px;
+  }
+  .tab-btn.active{ background:var(--ink); border-color:var(--ink); color:var(--plaster); }
+
+  .space-panel{ display:none; }
+  .space-panel.active{ display:block; }
+  .space-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .space-card{
+    background:var(--plaster); overflow:hidden;
+    border-radius:var(--arch) var(--arch) 14px 14px;
+    border:1px solid var(--line);
+  }
+  .section-alt .space-card{ background:var(--adobe); }
+  .space-photo{ aspect-ratio:4/3; position:relative; overflow:hidden; }
+  .space-photo svg{ width:100%; height:100%; }
+  .space-photo.rented svg{ filter:grayscale(45%); opacity:0.75; }
+  .space-tag{
+    position:absolute; top:14px; left:14px;
+    font-family:var(--mono); font-size:0.64rem; letter-spacing:0.05em; text-transform:uppercase;
+    padding:5px 12px; border-radius:20px; color:var(--plaster);
+  }
+  .space-tag.open{ background:var(--turquoise); }
+  .space-tag.rented{ background:var(--rented); }
+  .space-body{ padding:20px 22px 24px; }
+  .space-suite{ font-family:var(--display); font-size:1.3rem; font-weight:700; }
+  .space-rate{ font-family:var(--mono); font-size:0.82rem; color:var(--ink-soft); margin:6px 0 14px; }
+  .price-tiers{ margin:10px 0 14px; display:flex; flex-direction:column; gap:5px; }
+  .price-tiers .tier{
+    display:flex; justify-content:space-between; align-items:baseline;
+    font-family:var(--mono); font-size:0.78rem; padding:3px 0;
+  }
+  .price-tiers .tier .term{ color:var(--ink-soft); }
+  .price-tiers .tier .amt{ font-weight:700; color:var(--ink); }
+  .price-tiers .tier.best .amt{ color:var(--turquoise-d); }
+  .space-meta{ display:flex; gap:16px; font-family:var(--mono); font-size:0.74rem; color:var(--ink-soft); border-top:1px solid var(--line); padding-top:14px; }
+  .space-note{ font-family:var(--mono); font-size:0.78rem; color:var(--ink-soft); text-align:center; margin-top:26px; }
+
+  /* ---------- Neighborhood ---------- */
+  .neighborhood-grid{ display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start; }
+  .neighborhood-grid p{ color:var(--ink-soft); max-width:46ch; }
+  .amenity-cats{ display:flex; flex-direction:column; gap:26px; }
+  .amenity-cat h3{ font-size:1rem; font-weight:700; margin-bottom:12px; text-transform:uppercase; letter-spacing:0.03em; }
+  .amenity-list{ list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:10px; }
+  .amenity-list li{
+    background:var(--adobe-deep); font-family:var(--mono); font-size:0.78rem;
+    padding:9px 16px; border-radius:24px 24px 8px 8px;
+  }
+  .section-alt .amenity-list li{ background:var(--adobe); }
+
+  /* ---------- Tenant / Ownership split ---------- */
+  .split{ display:grid; grid-template-columns:1fr 1fr; gap:2px; background:var(--line); border:1px solid var(--line); border-radius:var(--arch) var(--arch) 14px 14px; overflow:hidden; }
+  .split-panel{ background:var(--adobe); padding:42px 38px; }
+  .section-alt .split-panel{ background:var(--plaster); }
+  .split-panel h3{ font-size:1.5rem; font-weight:700; margin-bottom:14px; }
+  .split-panel p{ color:var(--ink-soft); margin:0 0 22px; max-width:42ch; }
+  .split-panel ul{ list-style:none; margin:0 0 26px; padding:0; }
+  .split-panel li{ padding:10px 0; border-top:1px solid var(--line); font-size:0.9rem; display:flex; gap:10px; align-items:baseline; }
+  .split-panel li::before{ content:"◠"; color:var(--turquoise-d); font-size:0.8rem; }
+
+  /* ---------- Contact ---------- */
+  .contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:56px; }
+  .contact-info h3{ font-size:1.5rem; font-weight:700; margin-bottom:18px; }
+  .info-row{ display:flex; gap:16px; padding:16px 0; border-top:1px solid var(--line); }
+  .info-row:last-child{ border-bottom:1px solid var(--line); }
+  .info-row .k{ font-family:var(--mono); font-size:0.68rem; color:var(--ink-soft); text-transform:uppercase; min-width:90px; padding-top:2px; }
+  .info-row .v{ font-weight:500; }
+  .info-row a.v{ text-decoration:none; }
+  .info-row a.v:hover{ color:var(--turquoise-d); }
+
+  form{ display:flex; flex-direction:column; gap:15px; background:var(--plaster); padding:28px; border-radius:var(--arch) var(--arch) 14px 14px; border:1px solid var(--line); }
+  .field{ display:flex; flex-direction:column; gap:6px; }
+  .field label{ font-family:var(--mono); font-size:0.66rem; text-transform:uppercase; letter-spacing:0.04em; color:var(--ink-soft); }
+  .field input, .field textarea, .field select{
+    font-family:var(--body); font-size:0.92rem; padding:11px 14px;
+    background:var(--adobe); border:1px solid var(--line); color:var(--ink); border-radius:8px;
+  }
+  .field input:focus, .field textarea:focus, .field select:focus{ outline:2px solid var(--turquoise); outline-offset:1px; }
+  form .btn-solid{ align-self:flex-start; margin-top:4px; }
+  .form-note{ font-family:var(--mono); font-size:0.7rem; color:var(--turquoise-d); margin-top:2px; }
+
+  footer{ border-top:1px solid var(--line); padding:38px 0; background:var(--ink); color:var(--adobe); }
+  footer .wrap{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
+  footer .logo .word{ color:var(--adobe); }
+  footer .foot-links{ display:flex; gap:20px; list-style:none; margin:0; padding:0; font-size:0.84rem; }
+  footer .foot-links a{ text-decoration:none; color:#B7A47C; }
+  footer .foot-links a:hover{ color:var(--adobe); }
+  footer .fine{ font-family:var(--mono); font-size:0.66rem; color:#8E7D5B; margin-top:20px; }
+
+  @media (max-width:900px){
+    .hero-inner{ grid-template-columns:1fr; }
+    .hero-art{ order:-1; max-width:340px; margin:0 auto; }
+    .trust-strip .wrap{ grid-template-columns:repeat(2,1fr); }
+    .trust-item:nth-child(3){ border-left:none; }
+    .gallery-grid{ grid-template-columns:repeat(2,1fr); grid-auto-rows:120px; }
+    .gallery-grid .g1{ grid-column:span 2; grid-row:span 1; }
+    .space-grid{ grid-template-columns:1fr; }
+    .split{ grid-template-columns:1fr; }
+    .neighborhood-grid{ grid-template-columns:1fr; }
+    .contact-grid{ grid-template-columns:1fr; }
+  }
+  @media (max-width:620px){
+    .nav-links, .nav-cta{ display:none; }
+    .nav-toggle{ display:block; }
+    .tabbar{ flex-wrap:wrap; }
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{ scroll-behavior:auto; }
+    *{ transition:none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="#top" class="logo">
+      <span class="mark"></span>
+      <span class="word">Mercer Properties<span class="sub">The Mercer Building</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#building">Building</a></li>
+      <li><a href="#spaces">Available Spaces</a></li>
+      <li><a href="#neighborhood">Neighborhood</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Inquire</a>
+    <button class="nav-toggle" aria-label="menu"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div>
+        <p class="eyebrow">Office Leasing · El Paso, TX</p>
+        <h1>Office space <span class="accent">built for how you work.</span></h1>
+        <p class="lede">The Mercer Building offers flexible office suites in the heart of El Paso — daylight-filled floors, on-site management, and space that scales as your team grows.</p>
+        <div class="hero-ctas">
+          <a href="#spaces" class="btn btn-solid">View available spaces</a>
+          <a href="#contact" class="btn btn-outline">Schedule a tour</a>
+        </div>
+      </div>
+      <div class="hero-art">
+        <svg viewBox="0 0 460 420" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="330" cy="80" r="42" fill="#C4872B" opacity="0.85"/>
+          <polygon points="0,420 0,270 60,200 110,260 160,160 220,280 270,130 330,270 380,210 460,300 460,420" fill="#6C93A6" opacity="0.3"/>
+          <rect x="130" y="150" width="180" height="230" rx="10" fill="#1C7C6E" opacity="0.92"/>
+          <g fill="#F4ECDA" opacity="0.85">
+            <rect x="148" y="172" width="24" height="26" rx="3"/>
+            <rect x="188" y="172" width="24" height="26" rx="3"/>
+            <rect x="228" y="172" width="24" height="26" rx="3"/>
+            <rect x="268" y="172" width="24" height="26" rx="3"/>
+            <rect x="148" y="212" width="24" height="26" rx="3"/>
+            <rect x="188" y="212" width="24" height="26" rx="3"/>
+            <rect x="228" y="212" width="24" height="26" rx="3"/>
+            <rect x="268" y="212" width="24" height="26" rx="3"/>
+            <rect x="148" y="252" width="24" height="26" rx="3"/>
+            <rect x="188" y="252" width="24" height="26" rx="3"/>
+            <rect x="228" y="252" width="24" height="26" rx="3"/>
+            <rect x="268" y="252" width="24" height="26" rx="3"/>
+          </g>
+          <path d="M130 150 a90 40 0 0 1 180 0 z" fill="#1C7C6E" opacity="0.92"/>
+          <rect x="0" y="380" width="460" height="40" fill="#E9DBBF"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="trust-strip">
+      <div class="wrap">
+        <div class="trust-item"><div class="num">Downtown</div><div class="label">El Paso, TX</div></div>
+        <div class="trust-item"><div class="num">On-site</div><div class="label">Building management</div></div>
+        <div class="trust-item"><div class="num">Flexible</div><div class="label">Lease terms available</div></div>
+        <div class="trust-item"><div class="num">Now</div><div class="label">Leasing open suites</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUILDING / GALLERY -->
+  <section class="section" id="building">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="arch-divider"></div>
+        <p class="eyebrow" style="justify-content:center;">The building</p>
+        <h2>A closer look at Mercer</h2>
+      </div>
+      <p class="building-copy">Six floors of daylight-filled office space, a shared lobby and conference suite, and on-site parking — walk through a few views of the building below.</p>
+      <div class="gallery-grid">
+        <div class="gallery-item g1" onclick="openLightbox(0)">
+          <svg viewBox="0 0 400 400"><rect width="400" height="400" fill="#DCC79A"/><polygon points="0,400 0,220 90,150 190,240 280,120 400,220 400,400" fill="#1C7C6E" opacity="0.55"/></svg>
+          <span class="glabel">Exterior</span>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(1)">
+          <svg viewBox="0 0 400 260"><rect width="400" height="260" fill="#DCC79A"/><polygon points="0,260 0,150 140,90 260,160 400,100 400,260" fill="#C4872B" opacity="0.5"/></svg>
+          <span class="glabel">Lobby</span>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(2)">
+          <svg viewBox="0 0 400 260"><rect width="400" height="260" fill="#DCC79A"/><polygon points="0,260 0,170 120,110 220,180 320,100 400,170 400,260" fill="#6C93A6" opacity="0.55"/></svg>
+          <span class="glabel">Suite interior</span>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(3)">
+          <svg viewBox="0 0 400 260"><rect width="400" height="260" fill="#DCC79A"/><polygon points="0,260 0,180 130,130 240,190 400,140 400,260" fill="#A65A3E" opacity="0.4"/></svg>
+          <span class="glabel">Conference room</span>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(4)">
+          <svg viewBox="0 0 400 260"><rect width="400" height="260" fill="#DCC79A"/><polygon points="0,260 0,190 100,140 200,200 300,130 400,190 400,260" fill="#1C7C6E" opacity="0.4"/></svg>
+          <span class="glabel">Parking &amp; entrance</span>
+        </div>
+      </div>
+      <p class="space-note">— placeholder images shown above. Swap in real building photography before this goes live.</p>
+    </div>
+  </section>
+
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" onclick="closeLightbox()">Close ✕</button>
+    <div class="lightbox-inner">
+      <div class="frame" id="lightbox-frame"></div>
+      <div class="lightbox-cap" id="lightbox-cap"></div>
+    </div>
+  </div>
+
+  <!-- AVAILABLE SPACES -->
+  <section class="section section-alt" id="spaces">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="arch-divider"></div>
+        <p class="eyebrow" style="justify-content:center;">Leasing</p>
+        <h2>Available Spaces</h2>
+      </div>
+      <div class="tabbar">
+        <button class="tab-btn active" onclick="showTab('open', this)">Open Spaces</button>
+        <button class="tab-btn" onclick="showTab('rented', this)">Rented Spaces</button>
+      </div>
+
+      <div class="space-panel active" id="panel-open">
+        <div class="space-grid">
+          <div class="space-card">
+            <div class="space-photo"><svg viewBox="0 0 400 300"><rect width="400" height="300" fill="#F4ECDA"/><polygon points="0,300 0,200 100,150 200,210 300,140 400,200 400,300" fill="#1C7C6E" opacity="0.5"/></svg><span class="space-tag open">Open</span></div>
+            <div class="space-body">
+              <div class="space-suite">Suite 201</div>
+              <div class="price-tiers">
+                <div class="tier"><span class="term">1-yr lease</span><span class="amt">$2,200/mo</span></div>
+                <div class="tier"><span class="term">2-yr lease</span><span class="amt">$2,050/mo</span></div>
+                <div class="tier best"><span class="term">3-yr lease</span><span class="amt">$1,900/mo</span></div>
+              </div>
+              <div class="space-meta"><span>Floor 2</span><span>1,100 sqft</span><span>4 offices</span></div>
+            </div>
+          </div>
+          <div class="space-card">
+            <div class="space-photo"><svg viewBox="0 0 400 300"><rect width="400" height="300" fill="#F4ECDA"/><polygon points="0,300 0,190 110,130 210,200 320,120 400,190 400,300" fill="#C4872B" opacity="0.45"/></svg><span class="space-tag open">Open</span></div>
+            <div class="space-body">
+              <div class="space-suite">Suite 305</div>
+              <div class="price-tiers">
+                <div class="tier"><span class="term">1-yr lease</span><span class="amt">$3,600/mo</span></div>
+                <div class="tier"><span class="term">2-yr lease</span><span class="amt">$3,400/mo</span></div>
+                <div class="tier best"><span class="term">3-yr lease</span><span class="amt">$3,150/mo</span></div>
+              </div>
+              <div class="space-meta"><span>Floor 3</span><span>1,850 sqft</span><span>Open plan</span></div>
+            </div>
+          </div>
+          <div class="space-card">
+            <div class="space-photo"><svg viewBox="0 0 400 300"><rect width="400" height="300" fill="#F4ECDA"/><polygon points="0,300 0,210 90,160 190,220 290,150 400,210 400,300" fill="#6C93A6" opacity="0.5"/></svg><span class="space-tag open">Open</span></div>
+            <div class="space-body">
+              <div class="space-suite">Suite 410</div>
+              <div class="price-tiers">
+                <div class="tier"><span class="term">1-yr lease</span><span class="amt">$1,350/mo</span></div>
+                <div class="tier"><span class="term">2-yr lease</span><span class="amt">$1,250/mo</span></div>
+                <div class="tier best"><span class="term">3-yr lease</span><span class="amt">$1,150/mo</span></div>
+              </div>
+              <div class="space-meta"><span>Floor 4</span><span>650 sqft</span><span>2 offices</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="space-panel" id="panel-rented">
+        <div class="space-grid">
+          <div class="space-card">
+            <div class="space-photo rented"><svg viewBox="0 0 400 300"><rect width="400" height="300" fill="#F4ECDA"/><polygon points="0,300 0,200 100,150 200,210 300,140 400,200 400,300" fill="#1C7C6E" opacity="0.5"/></svg><span class="space-tag rented">Leased</span></div>
+            <div class="space-body">
+              <div class="space-suite">Suite 102</div>
+              <div class="space-rate">Leased through 2027</div>
+              <div class="space-meta"><span>Floor 1</span><span>2,200 sqft</span><span>Law firm</span></div>
+            </div>
+          </div>
+          <div class="space-card">
+            <div class="space-photo rented"><svg viewBox="0 0 400 300"><rect width="400" height="300" fill="#F4ECDA"/><polygon points="0,300 0,190 110,130 210,200 320,120 400,190 400,300" fill="#C4872B" opacity="0.45"/></svg><span class="space-tag rented">Leased</span></div>
+            <div class="space-body">
+              <div class="space-suite">Suite 204</div>
+              <div class="space-rate">Leased through 2026</div>
+              <div class="space-meta"><span>Floor 2</span><span>980 sqft</span><span>Design studio</span></div>
+            </div>
+          </div>
+          <div class="space-card">
+            <div class="space-photo rented"><svg viewBox="0 0 400 300"><rect width="400" height="300" fill="#F4ECDA"/><polygon points="0,300 0,210 90,160 190,220 290,150 400,210 400,300" fill="#6C93A6" opacity="0.5"/></svg><span class="space-tag rented">Leased</span></div>
+            <div class="space-body">
+              <div class="space-suite">Suite 501</div>
+              <div class="space-rate">Leased through 2028</div>
+              <div class="space-meta"><span>Floor 5</span><span>3,100 sqft</span><span>Tech company</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="space-note">— placeholder suites shown above. Replace with real availability, rates, and floor plans.</p>
+    </div>
+  </section>
+
+  <!-- FOR TENANTS / FOR THE BUILDING -->
+  <section class="section">
+    <div class="wrap">
+      <div class="split">
+        <div class="split-panel">
+          <p class="eyebrow">For prospective tenants</p>
+          <h3>Move in ready, on your timeline</h3>
+          <p>Tour a suite, review the floor plan, and get a lease quote — most tenants move from tour to signed lease in under two weeks.</p>
+          <ul>
+            <li>Flexible lease terms</li>
+            <li>Build-out &amp; furnishing support</li>
+            <li>On-site parking included</li>
+          </ul>
+          <a href="#spaces" class="btn btn-solid">Browse open suites</a>
+        </div>
+        <div class="split-panel">
+          <p class="eyebrow">For the building</p>
+          <h3>Full-service management</h3>
+          <p>Mercer Properties handles leasing, maintenance, and day-to-day operations for the building — one point of contact for everything.</p>
+          <ul>
+            <li>On-site maintenance team</li>
+            <li>24/7 building access &amp; security</li>
+            <li>Common-area upkeep included</li>
+          </ul>
+          <a href="#contact" class="btn btn-outline">Talk to management</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEIGHBORHOOD -->
+  <section class="section section-alt" id="neighborhood">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="arch-divider"></div>
+        <p class="eyebrow" style="justify-content:center;">The area</p>
+        <h2>Neighborhood</h2>
+      </div>
+      <div class="neighborhood-grid">
+        <div>
+          <p>The Mercer Building sits in central El Paso, walkable to lunch spots and coffee, with easy highway access for commuting teams and quick trips across the border.</p>
+          <p>Whether it's a client lunch two blocks away or a coffee run between meetings, everything your team needs day-to-day is close by.</p>
+        </div>
+        <div class="amenity-cats">
+          <div class="amenity-cat">
+            <h3>Food &amp; coffee</h3>
+            <ul class="amenity-list">
+              <li>Downtown cafés</li>
+              <li>Lunch spots within 2 blocks</li>
+              <li>Coffee shop across the street</li>
+            </ul>
+          </div>
+          <div class="amenity-cat">
+            <h3>Getting around</h3>
+            <ul class="amenity-list">
+              <li>On-site parking garage</li>
+              <li>Bus stop nearby</li>
+              <li>10 min to I-10</li>
+            </ul>
+          </div>
+          <div class="amenity-cat">
+            <h3>Nearby services</h3>
+            <ul class="amenity-list">
+              <li>Bank branch</li>
+              <li>Gym / fitness center</li>
+              <li>Hotel for visiting clients</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p class="space-note">— placeholder amenities shown above. Swap in the real businesses actually near the building.</p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="wrap contact-grid">
+      <div class="contact-info">
+        <div class="arch-divider" style="margin:0 0 18px;"></div>
+        <p class="eyebrow">Get in touch</p>
+        <h3>Tour a suite or ask about leasing</h3>
+        <div class="info-row"><span class="k">Phone</span><a class="v" href="tel:+19150000000">(915) 000-0000</a></div>
+        <div class="info-row"><span class="k">Email</span><a class="v" href="mailto:leasing@mercerproperties.example">leasing@mercerproperties.example</a></div>
+        <div class="info-row"><span class="k">Address</span><span class="v">The Mercer Building, El Paso, TX</span></div>
+        <div class="info-row"><span class="k">Hours</span><span class="v">Mon–Fri, 9:00 AM – 6:00 PM</span></div>
+      </div>
+      <form onsubmit="event.preventDefault(); document.getElementById('form-success').style.display='block'; this.reset();">
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" type="text" required placeholder="Your name">
+        </div>
+        <div class="field">
+          <label for="company">Company</label>
+          <input id="company" type="text" placeholder="Your company">
+        </div>
+        <div class="field">
+          <label for="size">Space needed</label>
+          <select id="size">
+            <option>Under 1,000 sqft</option>
+            <option>1,000 – 2,000 sqft</option>
+            <option>2,000+ sqft</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="email">Email or phone</label>
+          <input id="email" type="text" required placeholder="How should we reach you?">
+        </div>
+        <button type="submit" class="btn btn-solid">Request a tour</button>
+        <p class="form-note" id="form-success" style="display:none;">Thanks — we'll be in touch within one business day.</p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="#top" class="logo"><span class="mark"></span><span class="word">Mercer Properties</span></a>
+    <ul class="foot-links">
+      <li><a href="#building">Building</a></li>
+      <li><a href="#spaces">Available Spaces</a></li>
+      <li><a href="#neighborhood">Neighborhood</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+  <div class="wrap fine">© 2026 Mercer Properties. The Mercer Building, El Paso, TX. Sample site — placeholder contact info, listings, and photos shown throughout.</div>
+</footer>
+
+<script>
+  document.querySelector('.nav-toggle')?.addEventListener('click', () => {
+    document.querySelector('.nav-links').style.display =
+      document.querySelector('.nav-links').style.display === 'flex' ? 'none' : 'flex';
+  });
+
+  function showTab(name, btn){
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.space-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('panel-' + name).classList.add('active');
+  }
+
+  const galleryImages = [
+    { svg: '<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="400" fill="#DCC79A"/><polygon points="0,400 0,220 90,150 190,240 280,120 400,220 400,400" fill="#1C7C6E" opacity="0.55"/></svg>', cap: 'Exterior' },
+    { svg: '<svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="260" fill="#DCC79A"/><polygon points="0,260 0,150 140,90 260,160 400,100 400,260" fill="#C4872B" opacity="0.5"/></svg>', cap: 'Lobby' },
+    { svg: '<svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="260" fill="#DCC79A"/><polygon points="0,260 0,170 120,110 220,180 320,100 400,170 400,260" fill="#6C93A6" opacity="0.55"/></svg>', cap: 'Suite interior' },
+    { svg: '<svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="260" fill="#DCC79A"/><polygon points="0,260 0,180 130,130 240,190 400,140 400,260" fill="#A65A3E" opacity="0.4"/></svg>', cap: 'Conference room' },
+    { svg: '<svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="260" fill="#DCC79A"/><polygon points="0,260 0,190 100,140 200,200 300,130 400,190 400,260" fill="#1C7C6E" opacity="0.4"/></svg>', cap: 'Parking & entrance' }
+  ];
+
+  function openLightbox(i){
+    document.getElementById('lightbox-frame').innerHTML = galleryImages[i].svg;
+    document.getElementById('lightbox-cap').textContent = galleryImages[i].cap + ' — placeholder image';
+    document.getElementById('lightbox').classList.add('open');
+  }
+  function closeLightbox(){
+    document.getElementById('lightbox').classList.remove('open');
+  }
+  document.getElementById('lightbox').addEventListener('click', (e) => {
+    if(e.target.id === 'lightbox') closeLightbox();
+  });
+</script>
+
+</body>
+</html>
